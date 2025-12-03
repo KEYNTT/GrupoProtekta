@@ -1839,17 +1839,20 @@ footer {
     }
 }
 
+/* ============================================
+   FIX COMPLETO PARA HERO EN MÓVILES
+   ============================================ */
 
-/* Agregar estas reglas al final de tu archivo tooplate-titan-style.css aqui lo dekeeee */
-
-/* Fix para la sección Hero en móviles */
 @media screen and (max-width: 768px) {
     
-    /* Hero Section - Ajustes generales */
+    /* 🎯 FIX PRINCIPAL: Navbar tapando contenido */
     #home.hero {
+        padding-top: 80px !important; /* Ajusta según altura de tu navbar */
         min-height: 100vh;
         height: auto;
-        padding: 80px 20px 40px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 40px;
         overflow-x: hidden;
     }
     
@@ -1906,7 +1909,7 @@ footer {
         white-space: nowrap;
     }
     
-    /* Stats Section - Tarjetas de estadísticas */
+    /* Stats Section - Tarjetas en columna */
     .stats-section {
         display: grid;
         grid-template-columns: 1fr;
@@ -1945,10 +1948,19 @@ footer {
     .hero-bg-animation .geo-shape {
         opacity: 0.2;
     }
+    
+    /* Scroll suave para enlaces ancla */
+    section {
+        scroll-margin-top: 80px;
+    }
 }
 
 /* Para pantallas muy pequeñas (menos de 400px) */
 @media screen and (max-width: 400px) {
+    
+    #home.hero {
+        padding-top: 90px !important;
+    }
     
     .hero-content h1 {
         font-size: 1.75rem !important;
@@ -1974,20 +1986,5 @@ footer {
     .cta-secondary {
         padding: 10px 16px;
         font-size: 0.9rem;
-    }
-}
-
-/* Asegurar que el navbar no tape contenido */
-@media screen and (max-width: 768px) {
-    #navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-    }
-    
-    #home.hero {
-        margin-top: 0;
-        padding-top: 100px; /* Espacio para el navbar */
     }
 }
