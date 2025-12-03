@@ -1814,3 +1814,10 @@ footer {
         font-size: 1.2rem;   /* Ajusta aquí el tamaño */
     }
 }
+@media (max-width: 768px) {
+    .fade-in {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
