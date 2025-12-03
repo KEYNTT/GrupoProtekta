@@ -1821,3 +1821,13 @@ footer {
         transition: none !important;
     }
 }
+/* Eliminar espacio blanco en móviles */
+@media (max-width: 768px) {
+    #home,
+    .hero,
+    .hero-bg-animation {
+        overflow: hidden !important;
+        height: 100vh;
+        max-height: 100vh;
+    }
+}
