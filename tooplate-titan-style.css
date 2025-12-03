@@ -1838,3 +1838,156 @@ footer {
         opacity: 0.6;
     }
 }
+
+
+/* Agregar estas reglas al final de tu archivo tooplate-titan-style.css aqui lo dekeeee */
+
+/* Fix para la sección Hero en móviles */
+@media screen and (max-width: 768px) {
+    
+    /* Hero Section - Ajustes generales */
+    #home.hero {
+        min-height: 100vh;
+        height: auto;
+        padding: 80px 20px 40px;
+        overflow-x: hidden;
+    }
+    
+    /* Hero Content - Centrado y espaciado */
+    .hero-content {
+        padding: 20px 15px;
+        max-width: 100%;
+        text-align: center;
+        position: relative;
+        z-index: 10;
+    }
+    
+    /* Título principal */
+    .hero-content h1 {
+        font-size: 2rem !important;
+        line-height: 1.2;
+        margin-bottom: 15px;
+        word-wrap: break-word;
+    }
+    
+    /* Subtítulo */
+    .hero-content .subtitle {
+        font-size: 1rem !important;
+        line-height: 1.4;
+        margin-bottom: 10px;
+        padding: 0 10px;
+    }
+    
+    /* Texto de servicios */
+    .hero-content > p {
+        font-size: 0.85rem !important;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        word-wrap: break-word;
+        padding: 0 10px;
+    }
+    
+    /* Botones CTA */
+    .cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+    
+    .cta-primary,
+    .cta-secondary {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        white-space: nowrap;
+    }
+    
+    /* Stats Section - Tarjetas de estadísticas */
+    .stats-section {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-top: 30px;
+        width: 100%;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .stat-card {
+        padding: 20px 15px;
+        min-height: auto;
+    }
+    
+    .stat-number {
+        font-size: 2rem !important;
+        margin-bottom: 8px;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem !important;
+    }
+    
+    /* Animaciones de fondo - Reducir en móvil */
+    .hero-bg-animation .floating-shape {
+        opacity: 0.3;
+        transform: scale(0.7);
+    }
+    
+    .hero-bg-animation .particles {
+        opacity: 0.4;
+    }
+    
+    .hero-bg-animation .geo-shape {
+        opacity: 0.2;
+    }
+}
+
+/* Para pantallas muy pequeñas (menos de 400px) */
+@media screen and (max-width: 400px) {
+    
+    .hero-content h1 {
+        font-size: 1.75rem !important;
+    }
+    
+    .hero-content .subtitle {
+        font-size: 0.9rem !important;
+    }
+    
+    .hero-content > p {
+        font-size: 0.75rem !important;
+    }
+    
+    .stat-number {
+        font-size: 1.75rem !important;
+    }
+    
+    .stat-label {
+        font-size: 0.85rem !important;
+    }
+    
+    .cta-primary,
+    .cta-secondary {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Asegurar que el navbar no tape contenido */
+@media screen and (max-width: 768px) {
+    #navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+    
+    #home.hero {
+        margin-top: 0;
+        padding-top: 100px; /* Espacio para el navbar */
+    }
+}
