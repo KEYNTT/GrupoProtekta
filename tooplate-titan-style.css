@@ -1,11 +1,35 @@
 @charset "utf-8";
-/* CSS Document 
 
-Tooplate 2147 Titan Folio
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+/* --- Mobile Nav Fix --- */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
 
-https://www.tooplate.com/view/2147-titan-folio
+    .mobile-menu-btn {
+        display: flex !important;
+    }
 
-*/
+    .mobile-nav {
+        display: none;
+        flex-direction: column;
+        background: #0a0a0a;
+        padding: 1.5rem;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .mobile-nav.active {
+        display: flex;
+    }
+}
 
 * {
     margin: 0;
@@ -1312,7 +1336,7 @@ section {
 }
 
 .portfolio-image.GESTION {
-    background-image: url('Asistente de Accesos en edificios y condominios.jpg');
+    background-image: url('Gestión y Administración de Estacionamientos.jpg');
 }
 
 .portfolio-content {
