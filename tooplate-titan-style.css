@@ -1819,8 +1819,6 @@ footer {
     .hero,
     .hero-bg-animation {
         overflow: hidden !important;
-        height: 100vh;
-        max-height: 100vh;
     }
 }
 @media (max-width: 768px) {
@@ -1891,5 +1889,38 @@ footer {
     .footer-bottom {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
+    }
+}
+/* ==============================================
+   PARCHE FINAL: SOLUCIÓN RECTÁNGULO BLANCO
+   ============================================== */
+
+/* 1. Asegurar que el color base DETRÁS de todo sea tu azul oscuro, no blanco */
+html {
+    background-color: #0a0a0f !important; 
+    height: 100%;
+}
+
+/* 2. Desactivar el fondo fijo en móviles (La causa principal del error) */
+@media (max-width: 768px) {
+    body {
+        /* Cambiamos 'fixed' por 'scroll' para que no recalcule al deslizar */
+        background-attachment: scroll !important; 
+        
+        /* Aseguramos que el degradado cubra todo el largo de la página */
+        background-size: cover !important;
+        background-position: center top !important;
+        
+        /* Permitimos que el cuerpo crezca lo necesario */
+        min-height: 100vh !important;
+        height: auto !important;
+    }
+
+    /* 3. Corrección para el Hero que se cortaba */
+    .hero, 
+    .hero-bg-animation {
+        height: auto !important; /* Deja que el contenido decida el alto */
+        min-height: 100vh;       /* Mínimo la pantalla completa */
+        max-height: none !important; /* Quitamos el límite que cortaba el fondo */
     }
 }
