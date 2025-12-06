@@ -1924,3 +1924,153 @@ html {
         max-height: none !important; /* Quitamos el límite que cortaba el fondo */
     }
 }
+/* --- NUEVA SECCIÓN DE SERVICIOS (GRID) --- */
+
+/* Contenedor de filtros */
+.services-filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.service-filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.service-filter-btn:hover,
+.service-filter-btn.active {
+    background: var(--accent-blue);
+    color: white;
+    box-shadow: 0 0 15px var(--accent-glow);
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+}
+
+/* La Cuadrícula (Grid) */
+.services-grid {
+    display: grid;
+    /* Esto hace la magia: crea columnas automáticas según el espacio */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+/* Diseño de la Tarjeta */
+.service-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    backdrop-filter: blur(10px);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Icono Flotante */
+.card-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--accent-blue-dark), var(--accent-blue));
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 20px rgba(79, 131, 247, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .card-icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.card-icon {
+    font-size: 1.8rem;
+}
+
+/* Textos */
+.card-title {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.card-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Lista de características */
+.card-features {
+    list-style: none;
+    margin-top: auto; /* Empuja la lista al fondo */
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+}
+
+.card-features li {
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Efecto de resplandor azul en hover */
+.card-glow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: var(--accent-blue);
+    filter: blur(60px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.service-card:hover .card-glow {
+    opacity: 0.2;
+}
+
+/* Animación de entrada para el filtro */
+@keyframes fadeInCard {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.service-card.show {
+    animation: fadeInCard 0.5s ease forwards;
+}
+
+.service-card.hide {
+    display: none;
+}

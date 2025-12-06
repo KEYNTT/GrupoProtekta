@@ -94,97 +94,33 @@ window.addEventListener('scroll', updateActiveMenuItem);
 
 // Set initial active state
 updateActiveMenuItem();
+/* --- NUEVA FUNCIÓN PARA FILTRAR SERVICIOS --- */
+function initServiceFilters() {
+    const filters = document.querySelectorAll('.service-filter-btn');
+    const cards = document.querySelectorAll('.service-card');
 
-// Timeline functionality
-function initTimeline() {
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const timelineProgress = document.querySelector('.timeline-progress');
-    const timelineFilters = document.querySelectorAll('.timeline-filter');
-    
-    // Timeline scroll progress
-    function updateTimelineProgress() {
-        const timelineContainer = document.querySelector('.timeline-container');
-        const containerRect = timelineContainer.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        
-        if (containerRect.top < windowHeight && containerRect.bottom > 0) {
-            const progress = Math.max(0, Math.min(1, 
-                (windowHeight - containerRect.top) / (containerRect.height + windowHeight)
-            ));
-            timelineProgress.style.height = `${progress * 100}%`;
-        }
-    }
-    
-    // Timeline item visibility
-    function updateTimelineItems() {
-        timelineItems.forEach((item, index) => {
-            const rect = item.getBoundingClientRect();
-            const isVisible = rect.top < window.innerHeight * 0.8;
-            
-            if (isVisible && !item.classList.contains('visible')) {
-                setTimeout(() => {
-                    item.classList.add('visible');
-                }, index * 200);
-            }
-        });
-    }
-    
-    // Timeline filtering
-    timelineFilters.forEach(filter => {
-        filter.addEventListener('click', function() {
-            const filterValue = this.getAttribute('data-filter');
-            
-            // Update active filter
-            timelineFilters.forEach(f => f.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Filter timeline items
-            timelineItems.forEach(item => {
-                const category = item.getAttribute('data-category');
-                if (filterValue === 'all' || category === filterValue) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateY(0)';
-                    }, 100);
+    filters.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // 1. Quitar clase active de todos los botones
+            filters.forEach(f => f.classList.remove('active'));
+            // 2. Poner active al botón clickeado
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            cards.forEach(card => {
+                // 3. Mostrar u ocultar tarjetas
+                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                    card.classList.remove('hide');
+                    card.classList.add('show');
                 } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateY(30px)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
+                    card.classList.add('hide');
+                    card.classList.remove('show');
                 }
             });
         });
     });
-    
-    // Timeline node interactions
-    document.querySelectorAll('.timeline-node').forEach(node => {
-        node.addEventListener('click', function() {
-            // Remove active class from all nodes
-            document.querySelectorAll('.timeline-node').forEach(n => n.classList.remove('active'));
-            // Add active class to clicked node
-            this.classList.add('active');
-            
-            // Smooth scroll to the timeline item
-            const timelineItem = this.closest('.timeline-item');
-            timelineItem.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
-            });
-        });
-    });
-    
-    // Listen for scroll events
-    window.addEventListener('scroll', () => {
-        updateTimelineProgress();
-        updateTimelineItems();
-    });
-    
-    // Initial calls
-    updateTimelineProgress();
-    updateTimelineItems();
 }
 
-// Initialize timeline when DOM is ready
-document.addEventListener('DOMContentLoaded', initTimeline);
+// Inicializar cuando carga la página
+document.addEventListener('DOMContentLoaded', initServiceFilters);
