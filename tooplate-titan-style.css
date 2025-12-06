@@ -1490,14 +1490,12 @@ section {
 
 /* Footer */
 footer {
-    background: linear-gradient(135deg, 
-        rgba(15, 25, 35, 0.95) 0%,
-        rgba(10, 15, 25, 0.95) 100%);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: #0a192f !important;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 2rem 0;
     margin-top: 4rem;
+    margin: 0;
+    width: 100%;
 }
 
 .footer-bottom {
@@ -1833,59 +1831,65 @@ footer {
     }
 }
 
-/* SOLUCIÓN: Prevenir rectángulo blanco en móviles */
+/* ========================================
+   FIX: Eliminar rectángulo blanco en footer
+   ======================================== */
+
 html {
-    overflow-x: hidden;
-    overscroll-behavior: none;
-    overscroll-behavior-y: none;
-    -webkit-overflow-scrolling: touch;
-    height: 100%;
+    background: #0a0a0f !important;
+    min-height: 100%;
 }
 
 body {
-    overflow-x: hidden;
-    overscroll-behavior: none;
-    overscroll-behavior-y: none;
+    background: linear-gradient(135deg, #0a0a0f 0%, #151520 25%, #1a1a2e 50%, #16213e 75%, #0f3460 100%) !important;
+    background-attachment: fixed !important;
     min-height: 100vh;
-    position: relative;
-    background: linear-gradient(135deg, #0a0a0f 0%, #151520 25%, #1a1a2e 50%, #16213e 75%, #0f3460 100%) fixed;
 }
 
-/* Asegurar que el footer no tenga espacios */
+/* Footer con fondo sólido oscuro */
 footer {
-    background: linear-gradient(135deg, 
-        rgba(15, 25, 35, 0.95) 0%,
-        rgba(10, 15, 25, 0.95) 100%);
-    margin: 0 !important;
+    background: #0a192f !important;  /* Fondo sólido oscuro */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 2rem 0;
+    margin: 0;
     width: 100%;
 }
 
-/* Prevenir espacios blancos en secciones */
-section {
-    background: transparent;
-    position: relative;
+.footer-bottom {
+    background: transparent !important;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
 }
 
-/* Fix específico para móviles */
+/* Prevenir el bounce/overscroll */
 @media (max-width: 768px) {
     html, body {
-        overscroll-behavior-y: contain;
-        overflow-x: hidden;
-        width: 100%;
-        max-width: 100vw;
+        overscroll-behavior-y: none !important;
+        -webkit-overflow-scrolling: touch;
+        background: #0a0a0f !important;
     }
     
     body {
         position: relative;
-        overflow-y: auto;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #0a0a0f 0%, #151520 25%, #1a1a2e 50%, #16213e 75%, #0f3460 100%) !important;
+        background-attachment: fixed !important;
     }
     
-    /* Prevenir el bounce en iOS */
-    .hero,
-    section,
     footer {
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
+        background: #0a192f !important;
+        margin: 0 !important;
+        padding: 2rem 0 !important;
+    }
+    
+    /* Eliminar efectos de backdrop-filter que pueden causar el rectángulo */
+    footer,
+    .footer-bottom {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
     }
 }
