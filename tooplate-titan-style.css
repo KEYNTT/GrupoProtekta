@@ -1359,7 +1359,7 @@ footer {
   text-decoration: none;
   box-shadow: 0 10px 20px rgba(0,0,0,.2);
   z-index: 9999;
-  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  transition: transform .15s ease, filter .15s ease;
 }
 
 .whatsapp-float:hover{
