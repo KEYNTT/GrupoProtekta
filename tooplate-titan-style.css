@@ -1345,3 +1345,29 @@ footer {
     outline: 2px solid var(--accent-blue);
     outline-offset: 2px;
 }
+.whatsapp-float{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 58px;
+  height: 58px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #25D366;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 10px 20px rgba(0,0,0,.2);
+  z-index: 9999;
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+.whatsapp-float:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.whatsapp-icon{
+  font-size: 26px;
+  line-height: 1;
+}
